@@ -2,8 +2,8 @@ from telegram.ext import Updater, MessageHandler, Filters
 from os import getenv
 
 
-BOT_CHAT_ID = "-1001190361827"#getenv("BOT_CHAT_ID")
-BOT_TOKEN = "1918486207:AAFmafmHIfCsbQds9r_41wuvES8H8gqyjCc"#getenv("BOT_TOKEN")
+BOT_CHAT_ID = getenv("BOT_CHAT_ID")
+BOT_TOKEN = getenv("BOT_TOKEN")
 
 users_perm = [1816693475, 1325010317]
 s = "/xd"
