@@ -5,13 +5,12 @@ BOT_CHAT_ID = getenv("BOT_CHAT_ID")
 BOT_TOKEN = getenv("BOT_TOKEN")
 
 users_perm = [1816693475, 1325010317]
-s = "/xd"
 
 def mensaje(update, context):
     msg = update.message.text
-    if update.effective_user.id in users_perm and str(msg).__contains__(s):
+    if update.effective_user.id in users_perm and str(msg).__contains__("/xd"):
         context.bot.delete_message(message_id = update.message.message_id, chat_id = update.message.chat_id)
-        context.bot.send_message(chat_id = BOT_CHAT_ID, text = str(msg).replace(s, ""))
+        context.bot.send_message(chat_id = BOT_CHAT_ID, text = str(msg).replace("/xd", ""))
     elif update.effective_user.id in users_perm and str(msg).__contains__("#s3"):
         context.bot.send_message(chat_id = "-1001588957727", text = str(msg).replace("#s3", ""))
     else:
