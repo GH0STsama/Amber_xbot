@@ -15,6 +15,8 @@ def mensaje(update, context):
         context.bot.send_message(chat_id = BOT_CHAT_ID, text = str(msg).replace(s, ""))
     elif update.effective_user.id in users_perm and str(msg).__contains__("#s3"):
         context.bot.send_message(chat_id = "-1001588957727", text = str(msg).replace("#s3", ""))
+    else:
+        pass
 
 updater = Updater(token = BOT_TOKEN, use_context = True)
 dp = updater.dispatcher
