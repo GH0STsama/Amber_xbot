@@ -9,7 +9,6 @@ s = "/xd"
 
 def mensaje(update, context):
     msg = update.message.text
-    u = update.effective_user.firstname
     if update.effective_user.id in users_perm and str(msg).__contains__(s):
         context.bot.delete_message(message_id = update.message.message_id, chat_id = update.message.chat_id)
         context.bot.send_message(chat_id = BOT_CHAT_ID, text = str(msg).replace(s, ""))
