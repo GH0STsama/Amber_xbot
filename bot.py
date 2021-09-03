@@ -37,7 +37,7 @@ def promo(update, context):
     grupo = InlineKeyboardButton("💬CHAT💬", url = "https://t.me/joinchatqM9TvYSDdxmMDUx")
     pxp1 = InlineKeyboardButton("📣PXP📣", url = "http://t.me/Kaneki59")
     pxp2 = InlineKeyboardButton("PXP", url = "http://t.me/D10S3GEEK")
-    update.message.reply_text("https://t.me/GGcompanyS3", reply_markup = InlineKeyboardMarkup([canal, grupo], [pxp1], [pxp2]))
+    update.message.reply_text(text = "https://t.me/GGcompanyS3", reply_markup = InlineKeyboardMarkup([canal, grupo], [pxp1], [pxp2]))
 
 updater = Updater(token = BOT_TOKEN, use_context = True)
 dp = updater.dispatcher
