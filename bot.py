@@ -2,7 +2,7 @@ from telegram.ext import Updater, MessageHandler, Filters, CommandHandler
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from os import getenv
 
-BOT_TOKEN = "1846073090:AAFV2HQxwySo2OtkZcjcoPAdBjs59x9rB5U"
+BOT_TOKEN = getenv("BOT_TOKEN")
 
 users_perm = [1816693475, 1325010317]
 canal = "@GGcompanyS3"
