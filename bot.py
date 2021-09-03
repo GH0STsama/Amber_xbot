@@ -32,26 +32,28 @@ def document_to_channel(update, context):
         comentario = str(comentario).replace(for_channel, "")
         context.bot.send_document(chat_id = channel_id, document = documento, caption = comentario)
 
-button_channel = InlineKeyboardButton("⛩channel_id⛩", url = "https://t.me/GGcompanyS3")
+button_channel = InlineKeyboardButton("⛩CANAL⛩", url = "https://t.me/GGcompanyS3")
 button_group = InlineKeyboardButton("💬CHAT💬", url = "https://t.me/joinchatqM9TvYSDdxmMDUx")
 button_pxp1 = InlineKeyboardButton("📣PXP📣", url = "http://t.me/Kaneki59")
 button_pxp2 = InlineKeyboardButton("📢PXP📢", url = "http://t.me/D10S3GEEK")
 
 def send_channel(update, context):
-    context.bot.send_message(chat_id = channel_id, text = "https://t.me/GGcompanyS3", reply_markup = InlineKeyboardMarkup([[button_channel, button_group],[button_pxp1],[button_pxp2]]))
+    context.bot.send_message(chat_id = channel_id, text = "https://t.me/GGcompanyS3", reply_markup = InlineKeyboardMarkup([[button_channel][button_group],[button_pxp1],[button_pxp2]]))
 
 def send_user(update, context):
-    context.bot.send_message(chat_id = update.effective_user.id, text = "https://t.me/GGcompanyS3", reply_markup = InlineKeyboardMarkup([[button_channel, button_group],[button_pxp1],[button_pxp2]]))
+    update.message.reply_text("https://t.me/GGcompanyS3", reply_markup = InlineKeyboardMarkup([[button_channel][button_group],[button_pxp1],[button_pxp2]])))
 
-def promo(update, context):
-    button1 = InlineKeyboardButton("👤 A mi", callback_data = send_user)
-    button2 = InlineKeyboardButton("📢 Al channel_id", callback_data = send_channel)
+def promo(update, context): 
+    button1 = InlineKeyboardButton("📢 Al Canal", callback_data = "callback_data_send_channel")
+    button2 = InlineKeyboardButton("👤 A mi", callback_data = "callback_data_send_user")
     if update.effective_user.id in users_perm:
-        update.message.reply_text("A donde desea enviar el mensaje?", reply_markup = InlineKeyboardMarkup([[button1],[button2]]))
+        update.message.reply_text(text = f"Hola <b>{update.effective_user.firstname}</b>,\nA donde desea enviar el mensaje?", parse_mode = "html", reply_markup = InlineKeyboardMarkup([[button1],[button2]]))
 
 updater = Updater(token = BOT_TOKEN, use_context = True)
 dp = updater.dispatcher
 dp.add_handler(CommandHandler("promo", promo))
+dp.add_handler(CommandHandler("callback_data_send_channel", send_channel))
+dp.add_handler(CommandHandler("callback_data_send_user", send_user))
 dp.add_handler(MessageHandler(Filters.text, messages))
 dp.add_handler(MessageHandler(Filters.photo, photo_to_channel))
 dp.add_handler(MessageHandler(Filters.document, document_to_channel))
