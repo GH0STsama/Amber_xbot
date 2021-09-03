@@ -42,10 +42,12 @@ button_pxp1 = InlineKeyboardButton("📣PXP📣", url = "http://t.me/Kaneki59")
 button_pxp2 = InlineKeyboardButton("📢PXP📢", url = "http://t.me/D10S3GEEK")
 
 def send_channel(update, context):
-    context.bot.send_message(chat_id = channel_id, text = "https://t.me/GGcompanyS3", reply_markup = InlineKeyboardMarkup([[button_channel, button_group], [button_pxp1], [button_pxp2]]))
+    if update.effective_user.id in users_perm:
+        context.bot.send_message(chat_id = channel_id, text = "https://t.me/GGcompanyS3", reply_markup = InlineKeyboardMarkup([[button_channel, button_group], [button_pxp1], [button_pxp2]]))
 
 def send_user(update, context):
-    update.message.reply_text("https://t.me/GGcompanyS3", reply_markup = InlineKeyboardMarkup([[button_channel, button_group], [button_pxp1], [button_pxp2]]))
+    if update.effective_user.id in users_perm:
+        update.message.reply_text("https://t.me/GGcompanyS3", reply_markup = InlineKeyboardMarkup([[button_channel, button_group], [button_pxp1], [button_pxp2]]))
 
 updater = Updater(token = BOT_TOKEN, use_context = True)
 dp = updater.dispatcher
