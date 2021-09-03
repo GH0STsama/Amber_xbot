@@ -44,8 +44,8 @@ def send_user(update, context):
     context.bot.send_message(chat_id = update.effective_user.id, text = "https://t.me/GGcompanyS3", reply_markup = InlineKeyboardMarkup([[button_channel_id, button_group_id],[button_pxp1],[button_pxp2]]))
 
 def promo(update, context):
-    button1 = InlineKeyboardButton("👤 A mi", send_user)
-    button2 = InlineKeyboardButton("📢 Al channel_id", send_channel)
+    button1 = InlineKeyboardButton("👤 A mi", callback_data = send_user)
+    button2 = InlineKeyboardButton("📢 Al channel_id", callback_data = send_channel)
     if update.effective_user.id in users_perm:
         update.message.reply_text("A donde desea enviar el mensaje?", reply_markup = InlineKeyboardMarkup([[button1][button2]]))
 
