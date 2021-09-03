@@ -10,6 +10,10 @@ group_id = "-1001190361827"
 for_group = "/xd"
 for_channel = "#s3"
 
+def start(update, context):
+    if update.effective_user.id in users_perm:
+        update.message.reply_text(f"Hola <b>{update.effective_user.id}-sama</b>, que puedo hacer por ti?\n\n<b>Que puedes hacer:</b>\n/xd - Escriba el comando <i>/xd</i> en un mensaje para enviarlo al grupo.\nEnvie un mensaje que contenga #s3 para enviarlo al canal.", parse_mode = "html", reply_markup = InlineKeyboardMarkup([InlineKeyboardButton("Mensaje de Promo", callback_data = "promo")]))
+
 def messages(update, context):
     msg = update.message.text
     if update.effective_user.id in users_perm and str(msg).__contains__(for_group):
@@ -51,6 +55,7 @@ def promo(update, context):
 
 updater = Updater(token = BOT_TOKEN, use_context = True)
 dp = updater.dispatcher
+dp.add_handler(CommandHandler("start", start))
 dp.add_handler(CommandHandler("promo", promo))
 dp.add_handler(CommandHandler("callback_data_send_channel", send_channel))
 dp.add_handler(CommandHandler("callback_data_send_user", send_user))
