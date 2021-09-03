@@ -33,11 +33,11 @@ def documento(update, context):
         context.bot.send_document(chat_id = canal, document = documento, caption = comentario)
 
 def promo(update, context):
-    canal = InlineKeyboardButton("⛩CANAL⛩", url = "https://t.me/GGcompanyS3")
-    grupo = InlineKeyboardButton("💬CHAT💬", url = "https://t.me/joinchatqM9TvYSDdxmMDUx")
-    pxp1 = InlineKeyboardButton("📣PXP📣", url = "http://t.me/Kaneki59")
-    pxp2 = InlineKeyboardButton("📢PXP📢", url = "http://t.me/D10S3GEEK")
-    update.message.reply_text(text = "https://t.me/GGcompanyS3", reply_markup = InlineKeyboardMarkup([[canal, grupo],[pxp1],[pxp2]]))
+    button_canal = InlineKeyboardButton("⛩CANAL⛩", url = "https://t.me/GGcompanyS3")
+    button_grupo = InlineKeyboardButton("💬CHAT💬", url = "https://t.me/joinchatqM9TvYSDdxmMDUx")
+    button_pxp1 = InlineKeyboardButton("📣PXP📣", url = "http://t.me/Kaneki59")
+    button_pxp2 = InlineKeyboardButton("📢PXP📢", url = "http://t.me/D10S3GEEK")
+    update.message.reply_text(text = "https://t.me/GGcompanyS3", reply_markup = InlineKeyboardMarkup([[button_canal, button_grupo],[button_pxp1],[button_pxp2]]))
 
 updater = Updater(token = BOT_TOKEN, use_context = True)
 dp = updater.dispatcher
