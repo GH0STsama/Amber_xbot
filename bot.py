@@ -49,11 +49,23 @@ def send_user(update, context):
     if update.effective_user.id in users_perm:
         update.message.reply_text("https://t.me/GGcompanyS3", reply_markup = InlineKeyboardMarkup([[button_channel, button_group], [button_pxp1], [button_pxp2]]))
 
+def freack_promo(update, context):
+    button1 = InlineKeyboardButton("📜Canal📜", url = "https://t.me/FreackChoiceS3")
+    button2 = InlineKeyboardButton("📜Grupo de Chat📜", url = "https://t.me/FreackChoiceChatS3")
+    button3 = InlineKeyboardButton("📜PxP 1📜", url = "https://t.me/EgoClamor")
+    button4 = InlineKeyboardButton("📜PxP 2📜", url = "https://t.me/FaZe_Demon")
+    context.bot.send_photo(chat_id = update.message.chat.id, photo = open("foto.jpg", "rb"),
+    caption = "⚜️FreackChoiceS3⚜️\n\n“A veces, la mente recibe un golpe tan brutal que se esconde en la demencia. Puede parecer que eso no sea beneficioso, pero lo es. A veces, la realidad es solo dolor, y para huir de ese dolor, la mente tiene que abandonar la realidad.”\n\nAnime🖋\nVideojuegos🖋\nProgramas🖋\nMangas🖋\nNovelas ligeras🖋\nY más contenido Freak🖋\n\n🛡¿Que esperas para unirte? 🛡", 
+    reply_markup = InlineKeyboardMarkup([
+        [button1, button2],[button3, button4]
+    ]))
+
 updater = Updater(token = BOT_TOKEN, use_context = True)
 dp = updater.dispatcher
 dp.add_handler(CommandHandler("start", start))
 dp.add_handler(CommandHandler("p", send_user))
 dp.add_handler(CommandHandler("pc", send_channel))
+dp.add_handler(CommandHandler("asd", freack_promo))
 dp.add_handler(MessageHandler(Filters.text, messages))
 dp.add_handler(MessageHandler(Filters.photo, photo_to_channel))
 dp.add_handler(MessageHandler(Filters.document, document_to_channel))
