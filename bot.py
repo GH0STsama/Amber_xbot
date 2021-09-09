@@ -10,6 +10,8 @@ group_id = "-1001190361827"
 for_group = "/xd"
 for_channel = "#s3"
 
+VIDEO_PROMO = "https://tgfilestorage.com/dl_8345781/gif.mp4"
+
 def start(update, context):
     update.message.reply_text(f"Hola <b>{update.effective_user.first_name}-sama</b>, que puedo hacer por ti?\n\n"
     "<b>Ayuda del bot:</b>\n/xd - Envia un mensaje al grupo.\n#s3 - Envia un mensaje al canal.\n/p - Envia el mensaje de promo al usuario.\n/pc - Envia el mensaje de promo al canal.", parse_mode = "html")
@@ -38,16 +40,23 @@ def document_to_channel(update, context):
 
 button_channel = InlineKeyboardButton("⛩CANAL⛩", url = "https://t.me/GGcompanyS3")
 button_group = InlineKeyboardButton("💬CHAT💬", url = "https://t.me/joinchatqM9TvYSDdxmMDUx")
-button_pxp1 = InlineKeyboardButton("📣PXP📣", url = "http://t.me/Kaneki59")
-button_pxp2 = InlineKeyboardButton("📢PXP📢", url = "http://t.me/D10S3GEEK")
+button_pxp1 = InlineKeyboardButton("📢PXP1📢", url = "http://t.me/Kaneki59")
+button_pxp2 = InlineKeyboardButton("📢PXP2📢", url = "http://t.me/D10S3GEEK")
+button_admin = InlineKeyboardButton("💫QUIERO SER ADMIN💫", url = "http://t.me/D10S3GEEK")
+button_aportes1 = InlineKeyboardButton("🤝APORTES🤝", url = "http://t.me/Kaneki59")
+button_aportes2 = InlineKeyboardButton("🤝APORTES🤝", url = "http://t.me/D10S3GEEK")
 
 def send_channel(update, context):
     if update.effective_user.id in users_perm:
-        context.bot.send_message(chat_id = channel_id, text = "https://t.me/GGcompanyS3", reply_markup = InlineKeyboardMarkup([[button_channel, button_group], [button_pxp1], [button_pxp2]]))
+        context.bot.send_video(chat_id = channel_id, video = VIDEO_PROMO, 
+        caption = "Grupo 👥 creado con el objetivo de q los usuarios 👤 de este canal puedan disfrutar de diversos 🤳 contenidos sin que se vean afectados 📈 sus paquete de datos móviles (total mente gratis)🚫💸\n\n● Juegos🕹\n● Series 🎥\n● Anime ⛩\n● Humor 😂",
+        reply_markup = InlineKeyboardMarkup([[button_channel, button_group], [button_pxp1], [button_pxp2], [button_admin], [button_aportes1, button_aportes2]]))
 
 def send_user(update, context):
     if update.effective_user.id in users_perm:
-        update.message.reply_text("https://t.me/GGcompanyS3", reply_markup = InlineKeyboardMarkup([[button_channel, button_group], [button_pxp1], [button_pxp2]]))
+        context.bot.send_video(chat_id = update.effective_user.id, video = VIDEO_PROMO, 
+        caption = "Grupo 👥 creado con el objetivo de q los usuarios 👤 de este canal puedan disfrutar de diversos 🤳 contenidos sin que se vean afectados 📈 sus paquete de datos móviles (total mente gratis)🚫💸\n\n● Juegos🕹\n● Series 🎥\n● Anime ⛩\n● Humor 😂",
+        reply_markup = InlineKeyboardMarkup([[button_channel, button_group], [button_pxp1], [button_pxp2], [button_admin], [button_aportes1, button_aportes2]]))
 
 def freack_promo(update, context):
     button1 = InlineKeyboardButton("📜Canal📜", url = "https://t.me/FreackChoiceS3")
