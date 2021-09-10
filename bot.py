@@ -3,7 +3,7 @@ from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from os import getenv
 
 BOT_TOKEN = getenv("BOT_TOKEN")
-users_perm = [1816693475, 1325010317]
+users_perm = [1325010317]
 
 channel_id = "@GGcompanyS3"
 group_id = "-1001190361827"
