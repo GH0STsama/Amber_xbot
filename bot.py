@@ -8,7 +8,7 @@ users_perm = getenv("USERS_PERM")
 channel_id = "@GGcompanyS3"
 group_id = "-1001190361827"
 for_group = "/xd"
-for_channel = "#s3"
+for_channel = "/s3"
 
 VIDEO_PROMO = "https://tgfilestorage.com/dl_8345781/gif.mp4"
 
