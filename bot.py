@@ -53,10 +53,9 @@ def send_channel(update, context):
         reply_markup = InlineKeyboardMarkup([[button_channel, button_group], [button_pxp1], [button_pxp2], [button_admin], [button_aportes1, button_aportes2]]))
 
 def send_user(update, context):
-    if update.effective_user.id in users_perm:
-        context.bot.send_video(chat_id = update.effective_user.id, video = VIDEO_PROMO, 
-        caption = "Grupo 👥 creado con el objetivo de q los usuarios 👤 de este canal puedan disfrutar de diversos 🤳 contenidos sin que se vean afectados 📈 sus paquete de datos móviles (total mente gratis)🚫💸\n\n● Juegos🕹\n● Series 🎥\n● Anime ⛩\n● Humor 😂",
-        reply_markup = InlineKeyboardMarkup([[button_channel, button_group], [button_pxp1], [button_pxp2], [button_admin], [button_aportes1, button_aportes2]]))
+    context.bot.send_video(chat_id = update.effective_user.id, video = VIDEO_PROMO, 
+    caption = "Grupo 👥 creado con el objetivo de q los usuarios 👤 de este canal puedan disfrutar de diversos 🤳 contenidos sin que se vean afectados 📈 sus paquete de datos móviles (total mente gratis)🚫💸\n\n● Juegos🕹\n● Series 🎥\n● Anime ⛩\n● Humor 😂",
+    reply_markup = InlineKeyboardMarkup([[button_channel, button_group], [button_pxp1], [button_pxp2], [button_admin], [button_aportes1, button_aportes2]]))
 
 def freack_promo(update, context):
     button1 = InlineKeyboardButton("📜Canal📜", url = "https://t.me/FreackChoiceS3")
