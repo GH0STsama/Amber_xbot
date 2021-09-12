@@ -39,7 +39,7 @@ def document_to_channel(update, context):
         context.bot.send_document(chat_id = channel_id, document = documento, caption = comentario)
 
 button_channel = InlineKeyboardButton("⛩CANAL⛩", url = "https://t.me/GGcompanyS3")
-button_group = InlineKeyboardButton("💬CHAT💬", url = "https://t.me/joinchatqM9TvYSDdxmMDUx")
+button_group = InlineKeyboardButton("💬CHAT💬", url = "https://t.me/joinchat/ngufA21-Yy4zNDE5")
 button_pxp1 = InlineKeyboardButton("📢PXP1📢", url = "http://t.me/Kaneki59")
 button_pxp2 = InlineKeyboardButton("📢PXP2📢", url = "http://t.me/D10S3GEEK")
 button_admin = InlineKeyboardButton("💫QUIERO SER ADMIN💫", url = "http://t.me/D10S3GEEK")
