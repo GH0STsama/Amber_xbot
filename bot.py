@@ -14,7 +14,11 @@ VIDEO_PROMO = "https://tgfilestorage.com/dl_8345781/gif.mp4"
 
 def start(update, context):
     update.message.reply_text(f"Hola <b>{update.effective_user.first_name}-sama</b>, que puedo hacer por ti?\n\n"
-    "<b>Ayuda del bot:</b>\n/xd - Envia un mensaje al grupo.\n#s3 - Envia un mensaje al canal.\n/p - Envia el mensaje de promo al usuario.\n/pc - Envia el mensaje de promo al canal.", parse_mode = "html")
+    "<b>Ayuda del bot:</b>\n"
+    "/xd - Envia un mensaje al grupo.\n"
+    "/s3 - Envia un mensaje al canal.\n"
+    "/p - Envia el mensaje de promo al usuario.\n"
+    "/pc - Envia el mensaje de promo al canal.", parse_mode = "html")
 
 def messages(update, context):
     msg = update.message.text
@@ -49,12 +53,20 @@ button_aportes2 = InlineKeyboardButton("🤝APORTES🤝", url = "http://t.me/D10
 def send_channel(update, context):
     if update.effective_user.id in users_perm:
         context.bot.send_video(chat_id = channel_id, video = VIDEO_PROMO, 
-        caption = "Grupo 👥 creado con el objetivo de q los usuarios 👤 de este canal puedan disfrutar de diversos 🤳 contenidos sin que se vean afectados 📈 sus paquete de datos móviles (total mente gratis)🚫💸\n\n● Juegos🕹\n● Series 🎥\n● Anime ⛩\n● Humor 😂",
+        caption = "Grupo 👥 creado con el objetivo de q los usuarios 👤 de este canal puedan disfrutar de diversos 🤳 contenidos sin que se vean afectados 📈 sus paquete de datos móviles (total mente gratis)🚫💸\n\n"
+        "● Juegos🕹\n"
+        "● Series 🎥\n"
+        "● Anime ⛩\n"
+        "● Humor 😂",
         reply_markup = InlineKeyboardMarkup([[button_channel, button_group], [button_pxp1], [button_pxp2], [button_admin], [button_aportes1, button_aportes2]]))
 
 def send_user(update, context):
     context.bot.send_video(chat_id = update.effective_user.id, video = VIDEO_PROMO, 
-    caption = "Grupo 👥 creado con el objetivo de q los usuarios 👤 de este canal puedan disfrutar de diversos 🤳 contenidos sin que se vean afectados 📈 sus paquete de datos móviles (total mente gratis)🚫💸\n\n● Juegos🕹\n● Series 🎥\n● Anime ⛩\n● Humor 😂",
+    caption = "Grupo 👥 creado con el objetivo de q los usuarios 👤 de este canal puedan disfrutar de diversos 🤳 contenidos sin que se vean afectados 📈 sus paquete de datos móviles (total mente gratis)🚫💸\n\n"
+    "● Juegos🕹\n"
+    "● Series 🎥\n"
+    "● Anime ⛩\n"
+    "● Humor 😂",
     reply_markup = InlineKeyboardMarkup([[button_channel, button_group], [button_pxp1], [button_pxp2], [button_admin], [button_aportes1, button_aportes2]]))
 
 def freack_promo(update, context):
@@ -64,9 +76,7 @@ def freack_promo(update, context):
     button4 = InlineKeyboardButton("📜PxP 2📜", url = "https://t.me/FaZe_Demon")
     context.bot.send_photo(chat_id = update.message.chat.id, photo = open("foto.jpg", "rb"),
     caption = "⚜️FreackChoiceS3⚜️\n\n“A veces, la mente recibe un golpe tan brutal que se esconde en la demencia. Puede parecer que eso no sea beneficioso, pero lo es. A veces, la realidad es solo dolor, y para huir de ese dolor, la mente tiene que abandonar la realidad.”\n\nAnime🖋\nVideojuegos🖋\nProgramas🖋\nMangas🖋\nNovelas ligeras🖋\nY más contenido Freak🖋\n\n🛡¿Que esperas para unirte? 🛡", 
-    reply_markup = InlineKeyboardMarkup([
-        [button1, button2],[button3, button4]
-    ]))
+    reply_markup = InlineKeyboardMarkup([[button1, button2],[button3, button4]]))
 
 updater = Updater(token = BOT_TOKEN, use_context = True)
 dp = updater.dispatcher
