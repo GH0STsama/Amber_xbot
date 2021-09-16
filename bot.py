@@ -84,9 +84,12 @@ def documents(update, context):
         pass
 
 def enviar(update, context):
-    context.bot.send_message(chat_id = channel_id, 
-    text = "🔥Resumen Diario🔥\n\n" + "\n".join(str(x) for x in resumen), parse_mode = "html", disable_web_page_preview = True)
-    resumen.clear()
+    if update.effective_user.id in users_perm or update.effective_user.id == 1431933496:
+        context.bot.send_message(chat_id = channel_id, 
+        text = "🔥Resumen Diario🔥\n\n" + "\n".join(str(x) for x in resumen), parse_mode = "html", disable_web_page_preview = True)
+        resumen.clear()
+    else:
+        update.message.reply_text("⚠️ Usted no tiene permiso para enviar el resumen.")
 
 updater = Updater(token = BOT_TOKEN, use_context = True)
 dp = updater.dispatcher
