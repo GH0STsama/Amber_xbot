@@ -75,7 +75,7 @@ def freack_promo(update, context):
 
 def documents(update, context):
     if str(update.channel_post.chat_id) == str(channel_id):
-        resumen.append(f'<a href = "https://t.me/GGcompanyS3/{update.channel_post.message_id}">🆎 {str(update.channel_post.document.file_name).replace(".txt", "")}</a>')
+        resumen.append(f'🆎<a href = "https://t.me/GGcompanyS3/{update.channel_post.message_id}"> {str(update.channel_post.document.file_name).replace(".txt", "")}</a>')
     
     elif update.effective_user.id in users_perm and str(update.message.caption).__contains__(for_channel):
         comentario = str(update.message.caption).replace(for_channel, "")
@@ -85,7 +85,7 @@ def documents(update, context):
 
 def enviar(update, context):
     context.bot.send_message(chat_id = channel_id, 
-    text = "🙂RESUMEN DEL DIA😎\n\n" + "\n".join(str(x) for x in resumen), parse_mode = "html", disable_web_page_preview = True)
+    text = "🔥Resumen Diario🔥\n\n" + "\n".join(str(x) for x in resumen), parse_mode = "html", disable_web_page_preview = True)
     resumen.clear()
 
 updater = Updater(token = BOT_TOKEN, use_context = True)
