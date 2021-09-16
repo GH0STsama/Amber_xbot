@@ -5,10 +5,12 @@ from os import getenv
 BOT_TOKEN = getenv("BOT_TOKEN")
 users_perm = [1325010317]
 
-channel_id = "@GGcompanyS3"
+channel_id = "-1001598727622"
 group_id = "-1001190361827"
 for_group = "/xd"
 for_channel = "/s3"
+
+resumen = []
 
 VIDEO_PROMO = "https://tgfilestorage.com/dl_8345781/gif.mp4"
 
@@ -34,13 +36,6 @@ def photo_to_channel(update, context):
     if update.effective_user.id in users_perm and str(comentario).__contains__(for_channel):
         comentario = str(comentario).replace(for_channel, "")
         context.bot.send_photo(photo = imagen, chat_id = channel_id, caption = comentario)
-
-def document_to_channel(update, context):
-    documento = update.message.document.file_id
-    comentario = update.message.caption
-    if update.effective_user.id in users_perm and str(comentario).__contains__(for_channel):
-        comentario = str(comentario).replace(for_channel, "")
-        context.bot.send_document(chat_id = channel_id, document = documento, caption = comentario)
 
 button_channel = InlineKeyboardButton("⛩CANAL⛩", url = "https://t.me/GGcompanyS3")
 button_group = InlineKeyboardButton("💬CHAT💬", url = "https://t.me/joinchat/ngufA21-Yy4zNDE5")
@@ -78,15 +73,31 @@ def freack_promo(update, context):
     caption = "⚜️FreackChoiceS3⚜️\n\n“A veces, la mente recibe un golpe tan brutal que se esconde en la demencia. Puede parecer que eso no sea beneficioso, pero lo es. A veces, la realidad es solo dolor, y para huir de ese dolor, la mente tiene que abandonar la realidad.”\n\nAnime🖋\nVideojuegos🖋\nProgramas🖋\nMangas🖋\nNovelas ligeras🖋\nY más contenido Freak🖋\n\n🛡¿Que esperas para unirte? 🛡", 
     reply_markup = InlineKeyboardMarkup([[button1, button2],[button3, button4]]))
 
+def documents(update, context):
+    if str(update.channel_post.chat_id) == str(channel_id):
+        resumen.append(f'<a href = "https://t.me/{str(channel_id).replace("@", "")}/{update.channel_post.message_id}">🆎 {str(update.channel_post.document.file_name).replace(".txt", "")}</a>')
+    
+    elif update.effective_user.id in users_perm and str(update.message.caption).__contains__(for_channel):
+        comentario = str(update.message.caption).replace(for_channel, "")
+        context.bot.send_document(chat_id = channel_id, document = update.message.document.file_id, caption = comentario)
+    else:
+        pass
+
+def enviar(update, context):
+    context.bot.send_message(chat_id = channel_id, 
+    text = "🙂RESUMEN DEL DIA😎\n\n" + "\n".join(str(x) for x in resumen), parse_mode = "html", disable_web_page_preview = True)
+    resumen.clear()
+
 updater = Updater(token = BOT_TOKEN, use_context = True)
 dp = updater.dispatcher
 dp.add_handler(CommandHandler("start", start))
 dp.add_handler(CommandHandler("p", send_user))
 dp.add_handler(CommandHandler("pc", send_channel))
 dp.add_handler(CommandHandler("asd", freack_promo))
+dp.add_handler(CommandHandler('resumen', enviar))
 dp.add_handler(MessageHandler(Filters.text, messages))
 dp.add_handler(MessageHandler(Filters.photo, photo_to_channel))
-dp.add_handler(MessageHandler(Filters.document, document_to_channel))
+dp.add_handler(MessageHandler(Filters.document, documents))
 
 updater.start_polling()
 print("Bot Iniciado!")
