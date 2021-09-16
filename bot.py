@@ -5,7 +5,7 @@ from os import getenv
 BOT_TOKEN = getenv("BOT_TOKEN")
 users_perm = [1325010317]
 
-channel_id = "-1001598727622"
+channel_id = "-1001402527951"
 group_id = "-1001190361827"
 for_group = "/xd"
 for_channel = "/s3"
