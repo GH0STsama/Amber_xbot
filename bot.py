@@ -74,12 +74,17 @@ def freack_promo(update, context):
     reply_markup = InlineKeyboardMarkup([[button1, button2],[button3, button4]]))
 
 def documents(update, context):
-    if str(update.channel_post.chat_id) == str(channel_id):
-        resumen.append(f'🆎<a href = "https://t.me/GGcompanyS3/{update.channel_post.message_id}"> {str(update.channel_post.document.file_name).replace(".txt", "")}</a>')
-    
-    elif update.effective_user.id in users_perm and str(update.message.caption).__contains__(for_channel):
-        comentario = str(update.message.caption).replace(for_channel, "")
-        context.bot.send_document(chat_id = channel_id, document = update.message.document.file_id, caption = comentario)
+    try:
+        if str(update.channel_post.chat_id) == str(channel_id):
+            resumen.append(f'🆎<a href = "https://t.me/GGcompanyS3/{update.channel_post.message_id}"> {str(update.channel_post.document.file_name).replace(".txt", "")}</a>')
+    except AttributeError:
+        pass
+    try:
+        if update.effective_user.id in users_perm and str(update.message.caption).__contains__(for_channel):
+            comentario = str(update.message.caption).replace(for_channel, "")
+            context.bot.send_document(chat_id = channel_id, document = update.message.document.file_id, caption = comentario)
+    except AttributeError:
+        pass
     else:
         pass
 
