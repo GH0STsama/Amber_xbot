@@ -1,8 +1,11 @@
+from telegram.bot import Bot
 from telegram.ext import Updater, MessageHandler, Filters, CommandHandler
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from os import getenv
 
-BOT_TOKEN = getenv("BOT_TOKEN")
+from telegram.update import Update
+
+BOT_TOKEN = "1918486207:AAFmafmHIfCsbQds9r_41wuvES8H8gqyjCc"
 users_perm = [1325010317]
 
 channel_id = "-1001402527951"
@@ -23,6 +26,7 @@ def start(update, context):
     "/pc - Envia el mensaje de promo al canal.", parse_mode = "html")
 
 def messages(update, context):
+    print(update)
     msg = update.message.text
     if update.effective_user.id in users_perm and str(msg).__contains__(for_group):
         context.bot.delete_message(message_id = update.message.message_id, chat_id = update.message.chat_id)
@@ -96,6 +100,13 @@ def enviar(update, context):
     else:
         update.message.reply_text("⚠️ Usted no tiene permiso para enviar el resumen.")
 
+#def borrar(update, context):
+#   context.bot.delete_message(chat_id = channel_id, message_id = 2623)
+
+def admins(update, context):
+    print(context.bot.get_chat_administrators(channel_id))
+    Bot.administrator
+
 updater = Updater(token = BOT_TOKEN, use_context = True)
 dp = updater.dispatcher
 dp.add_handler(CommandHandler("start", start))
@@ -103,6 +114,8 @@ dp.add_handler(CommandHandler("p", send_user))
 dp.add_handler(CommandHandler("pc", send_channel))
 dp.add_handler(CommandHandler("asd", freack_promo))
 dp.add_handler(CommandHandler('resumen', enviar))
+dp.add_handler(CommandHandler('admins', admins))
+#dp.add_handler(CommandHandler('del', borrar))
 dp.add_handler(MessageHandler(Filters.text, messages))
 dp.add_handler(MessageHandler(Filters.photo, photo_to_channel))
 dp.add_handler(MessageHandler(Filters.document, documents))
