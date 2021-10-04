@@ -3,8 +3,6 @@ from telegram.ext import Updater, MessageHandler, Filters, CommandHandler
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from os import getenv
 
-from telegram.update import Update
-
 BOT_TOKEN = "1918486207:AAFmafmHIfCsbQds9r_41wuvES8H8gqyjCc"
 users_perm = [1325010317]
 
