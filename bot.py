@@ -3,7 +3,7 @@ from telegram.ext import Updater, MessageHandler, Filters, CommandHandler
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from os import getenv
 
-BOT_TOKEN = "1918486207:AAFmafmHIfCsbQds9r_41wuvES8H8gqyjCc"
+BOT_TOKEN = getenv("BOT_TOKEN")
 users_perm = [1325010317]
 
 channel_id = "-1001402527951"
